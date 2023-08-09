@@ -74,6 +74,7 @@ app.use(cors());
 app.use(express.json());
 mongoose.set("strictQuery", false);
 app.use(routes);
+
 const connectdb = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URL);
@@ -86,7 +87,7 @@ const connectdb = async () => {
 app.get("/", (req, res) => {
   res.send({ title: "Connect" });
 });
-connectDB().then(() => {
+connectdb().then(() => {
   app.listen(port, () => {
     console.log("listening on port " + port);
   });
