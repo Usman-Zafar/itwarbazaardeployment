@@ -74,22 +74,6 @@ app.use(cors());
 app.use(express.json());
 mongoose.set("strictQuery", false);
 app.use(routes);
-
-const connectdb = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGO_URL);
-    console.log("Connect : ${conn.connection.host}");
-  } catch (err) {
-    console.log(err);
-    process.exit(1);
-  }
-};
-
-connectdb().then(() => {
-  app.listen(port, () => {
-    console.log("listening on port " + port);
-  });
-});
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (req, res) {
   res.sendFile(
@@ -101,6 +85,18 @@ app.get("*", function (req, res) {
     }
   );
 });
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+
+const connectdb = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log("Connect : ${conn.connection.host}");
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
+};
+connectdb().then(() => {
+  app.listen(PORT, () => {
+    console.log("listening on port " + PORT);
+  });
 });
