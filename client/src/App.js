@@ -14,7 +14,7 @@ function App() {
           {/* <Route exact path="/" element={<ProductPage />} /> */}
           {/* <Route exact path="/sellerproducts" element={<SellerProductPage />} /> */}
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<Signin />} />
+          <Route path="/" element={<Signin />} />
           {/* <Route path="/createproduct" element={<CreateProduct />} /> */}
         </Routes>
       </div>
