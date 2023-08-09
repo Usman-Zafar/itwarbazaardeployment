@@ -70,9 +70,10 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(cors());
+
 app.use(express.json());
 mongoose.set("strictQuery", false);
-app.use("/users", userRouter);
+app.use(routes);
 const connectdb = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URL);
