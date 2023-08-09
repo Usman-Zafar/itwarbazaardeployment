@@ -84,9 +84,7 @@ const connectdb = async () => {
     process.exit(1);
   }
 };
-app.get("/", (req, res) => {
-  res.send({ title: "Connect" });
-});
+
 connectdb().then(() => {
   app.listen(port, () => {
     console.log("listening on port " + port);

@@ -21,7 +21,7 @@ export const CustomerFooter = () => {
           Terms of Service
         </Link>{" "}
         |{" "}
-        <Link color="inherit" href="http://localhost:3000">
+        <Link color="inherit" href="/">
           Home
         </Link>
       </Typography>
